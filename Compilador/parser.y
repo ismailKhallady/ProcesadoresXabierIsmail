@@ -51,8 +51,7 @@
 
  //PARTE 1.4: Prioridades y asociatividades (de menos a mas prioritario).
  // Resuelven los conflictos de la gramatica de expresiones, que es ambigua.
-%left oTK
-%left yTK
+%left oTK yTK
 %right noTK
 %nonassoc igualTK distintoTK menorTK mayorTK menorIgualTK mayorIgualTK
 %left masTK menosTK
