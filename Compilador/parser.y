@@ -34,8 +34,8 @@
 %token fconstTK ffuncionTK fmientrasTK fparaTK fsiTK ftipoTK ftuplaTK funcionTK
 %token fvarTK hacerTK hastaTK mientrasTK modTK noTK oTK paraTK realTK refTK
 %token salTK siTK tablaTK tipoTK tuplaTK varTK verdaderoTK yTK
- // Comentarios con significado sintactico
-%token precondicionTK postcondicionTK
+ // Comentarios
+%token comentarioTK
  // Identificadores y literales
 %token <cadena>   identificadorTK
 %token <entero>   literalEnteroTK
@@ -45,7 +45,7 @@
  // Operadores y simbolos
 %token asignacionTK subrangoTK entoncesTK sinoSiTK
 %token menorTK mayorTK igualTK menorIgualTK mayorIgualTK distintoTK
-%token masTK menosTK porTK divRealTK
+%token masTK menosTK porTK divRealTK potenciaTK
 %token parIzqTK parDerTK corchIzqTK corchDerTK
 %token comaTK puntoYComaTK puntoTK dosPuntosTK
 
@@ -56,6 +56,7 @@
 %nonassoc igualTK distintoTK menorTK mayorTK menorIgualTK mayorIgualTK
 %left masTK menosTK
 %left porTK divRealTK divTK modTK
+%right potenciaTK
 %right UNARIO                       // - y + unarios (se usa con %prec)
 %left puntoTK corchIzqTK refTK      // acceso a campo, a tabla y desreferencia
 
@@ -66,32 +67,32 @@
  /* ===================== 4.1 PROGRAMA ===================== */
 
 descAlgoritmo
-	: algoritmoTK identificadorTK puntoYComaTK cabeceraAlg bloqueAlg falgoritmoTK puntoTK
+	: algoritmoTK identificadorTK puntoYComaTK cabeceraAlg bloqueAlg falgoritmoTK puntoTK	{ }
 	;
 cabeceraAlg
-	: declGlobales declAF declEntSal precondicionTK
+	: declGlobales declAF declEntSal comentarioTK	{ }
 	;
 bloqueAlg
-	: bloque postcondicionTK
+	: bloque comentarioTK	{ }
 	;
 declGlobales
-	: declaracionTipo declGlobales
-	| declaracionConst declGlobales
-	| /* vacio */
+	: declaracionTipo declGlobales	{ }
+	| declaracionConst declGlobales	{ }
+	| /* vacio */	{ }
 	;
 declAF
-	: accionD declAF
-	| funcionD declAF
-	| /* vacio */
+	: accionD declAF	{ }
+	| funcionD declAF	{ }
+	| /* vacio */	{ }
 	;
 bloque
-	: declaraciones instrucciones
+	: declaraciones instrucciones	{ }
 	;
 declaraciones
-	: declaracionTipo declaraciones
-	| declaracionConst declaraciones
-	| declaracionVar declaraciones
-	| /* vacio */
+	: declaracionTipo declaraciones	{ }
+	| declaracionConst declaraciones	{ }
+	| declaracionVar declaraciones	{ }
+	| /* vacio */	{ }
 	;
 
  /* ===================== 4.1.1 DECLARACIONES ===================== */
@@ -99,75 +100,75 @@ declaraciones
 /* El enunciado pone un ; despues de ftipo, fconst y fvar, pero sus ejemplos no
  * lo ponen. Lo dejamos opcional (finDecl). */
 declaracionTipo
-	: tipoTK listaDTipo ftipoTK finDecl
+	: tipoTK listaDTipo ftipoTK finDecl	{ }
 	;
 declaracionConst
-	: constTK listaDCte fconstTK finDecl
+	: constTK listaDCte fconstTK finDecl	{ }
 	;
 declaracionVar
-	: varTK listaDVar fvarTK finDecl
+	: varTK listaDVar fvarTK finDecl	{ }
 	;
 finDecl
-	: puntoYComaTK
-	| /* vacio */
+	: puntoYComaTK	{ }
+	| /* vacio */	{ }
 	;
 
  /* 4.1.2 Tipos */
 listaDTipo
-	: identificadorTK igualTK dTipo puntoYComaTK listaDTipo
-	| /* vacio */
+	: identificadorTK igualTK dTipo puntoYComaTK listaDTipo	{ }
+	| /* vacio */	{ }
 	;
 dTipo
-	: tuplaTK listaCampos ftuplaTK
-	| tablaTK corchIzqTK expresion subrangoTK expresion corchDerTK deTK dTipo
-	| identificadorTK
-	| expresion subrangoTK expresion
-	| refTK dTipo
-	| tipoBase
+	: tuplaTK listaCampos ftuplaTK	{ }
+	| tablaTK corchIzqTK expresion subrangoTK expresion corchDerTK deTK dTipo	{ }
+	| identificadorTK	{ }
+	| expresion subrangoTK expresion	{ }
+	| refTK dTipo	{ }
+	| tipoBase	{ }
 	;
 tipoBase
-	: enteroTK
-	| booleanoTK
-	| caracterTK
-	| realTK
-	| cadenaTK
+	: enteroTK	{ }
+	| booleanoTK	{ }
+	| caracterTK	{ }
+	| realTK	{ }
+	| cadenaTK	{ }
 	;
 listaCampos
-	: identificadorTK dosPuntosTK dTipo puntoYComaTK listaCampos
-	| /* vacio */
+	: identificadorTK dosPuntosTK dTipo puntoYComaTK listaCampos	{ }
+	| /* vacio */	{ }
 	;
 
  /* 4.1.3 Constantes y variables */
 listaDCte
-	: identificadorTK igualTK literal puntoYComaTK listaDCte
-	| /* vacio */
+	: identificadorTK igualTK literal puntoYComaTK listaDCte	{ }
+	| /* vacio */	{ }
 	;
 literal
-	: literalEnteroTK
-	| literalRealTK
-	| literalCaracterTK
-	| literalCadenaTK
-	| verdaderoTK
-	| falsoTK
+	: literalEnteroTK	{ }
+	| literalRealTK	{ }
+	| literalCaracterTK	{ }
+	| literalCadenaTK	{ }
+	| verdaderoTK	{ }
+	| falsoTK	{ }
 	;
 listaDVar
-	: listaId dosPuntosTK dTipo puntoYComaTK listaDVar
-	| /* vacio */
+	: listaId dosPuntosTK dTipo puntoYComaTK listaDVar	{ }
+	| /* vacio */	{ }
 	;
 listaId
-	: identificadorTK comaTK listaId
-	| identificadorTK
+	: identificadorTK comaTK listaId	{ }
+	| identificadorTK	{ }
 	;
 declEntSal
-	: declEnt
-	| declEnt declSal
-	| declSal
+	: declEnt	{ }
+	| declEnt declSal	{ }
+	| declSal	{ }
 	;
 declEnt
-	: entTK listaDVar
+	: entTK listaDVar	{ }
 	;
 declSal
-	: salTK listaDVar
+	: salTK listaDVar	{ }
 	;
 
  /* ===================== 4.1.4 EXPRESIONES =====================
@@ -177,31 +178,31 @@ declSal
   * sola "expresion" y dejamos que la comprobacion de tipos (paso 2) decida si
   * una expresion es numerica o booleana. */
 expresion
-	: expresion masTK expresion
-	| expresion menosTK expresion
-	| expresion porTK expresion
-	| expresion divRealTK expresion
-	| expresion divTK expresion
-	| expresion modTK expresion
-	| menosTK expresion %prec UNARIO
-	| masTK expresion %prec UNARIO
-	| expresion yTK expresion
-	| expresion oTK expresion
-	| noTK expresion
-	| expresion oprel expresion %prec igualTK
-	| parIzqTK expresion parDerTK
-	| operando
-	| literal
-	| funcionLl
+	: expresion masTK expresion	{ }
+	| expresion menosTK expresion	{ }
+	| expresion porTK expresion	{ }
+	| expresion divRealTK expresion	{ }
+	| expresion divTK expresion	{ }
+	| expresion modTK expresion	{ }
+	| menosTK expresion %prec UNARIO	{ }
+	| masTK expresion %prec UNARIO	{ }
+	| expresion yTK expresion	{ }
+	| expresion oTK expresion	{ }
+	| noTK expresion	{ }
+	| expresion oprel expresion %prec igualTK	{ }
+	| parIzqTK expresion parDerTK	{ }
+	| operando	{ }
+	| literal	{ }
+	| funcionLl	{ }
 	;
 oprel
-	: menorTK | mayorTK | igualTK | menorIgualTK | mayorIgualTK | distintoTK
+	: menorTK | mayorTK | igualTK | menorIgualTK | mayorIgualTK | distintoTK	{ }
 	;
 operando
-	: identificadorTK
-	| operando puntoTK identificadorTK
-	| operando corchIzqTK expresion corchDerTK
-	| operando refTK
+	: identificadorTK	{ }
+	| operando puntoTK identificadorTK	{ }
+	| operando corchIzqTK expresion corchDerTK	{ }
+	| operando refTK	{ }
 	;
 
  /* ===================== 4.1.5 INSTRUCCIONES ===================== */
@@ -209,73 +210,73 @@ operando
  /* El ; separa instrucciones. Aceptamos ademas un ; final opcional, porque el
   * Ejemplo 3 del enunciado pone "fmientras;" justo antes de la postcondicion. */
 instrucciones
-	: listaInstrucciones
-	| listaInstrucciones puntoYComaTK
+	: listaInstrucciones	{ }
+	| listaInstrucciones puntoYComaTK	{ }
 	;
 listaInstrucciones
-	: listaInstrucciones puntoYComaTK instruccion
-	| instruccion
+	: listaInstrucciones puntoYComaTK instruccion	{ }
+	| instruccion	{ }
 	;
 instruccion
-	: continuarTK
-	| asignacion
-	| alternativa
-	| iteracion
-	| accionLl
+	: continuarTK	{ }
+	| asignacion	{ }
+	| alternativa	{ }
+	| iteracion	{ }
+	| accionLl	{ }
 	;
 asignacion
-	: operando asignacionTK expresion
+	: operando asignacionTK expresion	{ }
 	;
 alternativa
-	: siTK expresion entoncesTK instrucciones listaOpciones fsiTK
+	: siTK expresion entoncesTK instrucciones listaOpciones fsiTK	{ }
 	;
 listaOpciones
-	: sinoSiTK expresion entoncesTK instrucciones listaOpciones
-	| /* vacio */
+	: sinoSiTK expresion entoncesTK instrucciones listaOpciones	{ }
+	| /* vacio */	{ }
 	;
 iteracion
-	: itCotaFija
-	| itCotaExp
+	: itCotaFija	{ }
+	| itCotaExp	{ }
 	;
 itCotaExp
-	: mientrasTK expresion hacerTK instrucciones fmientrasTK
+	: mientrasTK expresion hacerTK instrucciones fmientrasTK	{ }
 	;
 itCotaFija
-	: paraTK identificadorTK asignacionTK expresion hastaTK expresion hacerTK instrucciones fparaTK
+	: paraTK identificadorTK asignacionTK expresion hastaTK expresion hacerTK instrucciones fparaTK	{ }
 	;
 
  /* ===================== 4.1.6 ACCIONES Y FUNCIONES ===================== */
 
 accionD
-	: accionTK aCabecera bloque faccionTK
+	: accionTK aCabecera bloque faccionTK	{ }
 	;
 funcionD
-	: funcionTK fCabecera bloque devTK expresion ffuncionTK
+	: funcionTK fCabecera bloque devTK expresion ffuncionTK	{ }
 	;
 aCabecera
-	: identificadorTK parIzqTK dParForm parDerTK puntoYComaTK
+	: identificadorTK parIzqTK dParForm parDerTK puntoYComaTK	{ }
 	;
 fCabecera
-	: identificadorTK parIzqTK listaDVar parDerTK devTK dTipo puntoYComaTK
+	: identificadorTK parIzqTK listaDVar parDerTK devTK dTipo puntoYComaTK	{ }
 	;
 dParForm
-	: dPForm puntoYComaTK dParForm
-	| /* vacio */
+	: dPForm puntoYComaTK dParForm	{ }
+	| /* vacio */	{ }
 	;
 dPForm
-	: entTK listaId dosPuntosTK dTipo
-	| salTK listaId dosPuntosTK dTipo
-	| esTK listaId dosPuntosTK dTipo
+	: entTK listaId dosPuntosTK dTipo	{ }
+	| salTK listaId dosPuntosTK dTipo	{ }
+	| esTK listaId dosPuntosTK dTipo	{ }
 	;
 accionLl
-	: identificadorTK parIzqTK lLl parDerTK
+	: identificadorTK parIzqTK lLl parDerTK	{ }
 	;
 funcionLl
-	: identificadorTK parIzqTK lLl parDerTK
+	: identificadorTK parIzqTK lLl parDerTK	{ }
 	;
 lLl
-	: expresion comaTK lLl
-	| expresion
+	: expresion comaTK lLl	{ }
+	| expresion	{ }
 	;
 
 %%
