@@ -13,7 +13,6 @@
 	int yylex(void);             // La crea flex a partir de scanner.l
 	void yyerror(const char *);  // Bison la llama cuando ve un error
 	extern FILE* yyin;           // Fichero del que lee el scanner
-	extern int yylineno;         // Linea actual (opcion yylineno de flex)
 %}
 
  // Mensajes de error que dicen que token se esperaba
@@ -184,6 +183,7 @@ expresion
 	| expresion divRealTK expresion	{ }
 	| expresion divTK expresion	{ }
 	| expresion modTK expresion	{ }
+	| expresion potenciaTK expresion { }
 	| menosTK expresion %prec UNARIO	{ }
 	| masTK expresion %prec UNARIO	{ }
 	| expresion yTK expresion	{ }
@@ -210,13 +210,10 @@ operando
  /* El ; separa instrucciones. Aceptamos ademas un ; final opcional, porque el
   * Ejemplo 3 del enunciado pone "fmientras;" justo antes de la postcondicion. */
 instrucciones
-	: listaInstrucciones	{ }
-	| listaInstrucciones puntoYComaTK	{ }
+	: instruccion puntoYComaTK instrucciones
+	| instruccion
 	;
-listaInstrucciones
-	: listaInstrucciones puntoYComaTK instruccion	{ }
-	| instruccion	{ }
-	;
+
 instruccion
 	: continuarTK	{ }
 	| asignacion	{ }
@@ -297,5 +294,5 @@ int main(int argc, char **argv){
 }
 
 void yyerror(const char * s){
-	printf("\tPARSER: ERROR en la linea %d: %s\n", yylineno, s);
+    printf("\tPARSER: ERROR: %s\n", s);
 }

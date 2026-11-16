@@ -17,7 +17,6 @@ algoritmo completo;
   sal s: entero;
 {Prec: n >= 0}
   var v: vector; p: punto; q: pentero; i: entero; b: booleano; fvar;
-  { comentario informativo }
   s := 0;
   para i := 1 hasta n hacer
     v[i] := doble(i);
