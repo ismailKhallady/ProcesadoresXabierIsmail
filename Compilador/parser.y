@@ -10,6 +10,7 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include "tablaDeSimbolos.h"
 	int yylex(void);             // La crea flex a partir de scanner.l
 	void yyerror(const char *);  // Bison la llama cuando ve un error
 	extern FILE* yyin;           // Fichero del que lee el scanner
@@ -20,6 +21,8 @@
 
  //PARTE 1.2: Tipos de los valores que el scanner deja en yylval
 %union{
+	listaNombres ids;
+	int tipo;
 	char * cadena;    // identificadores y literales cadena
 	int entero;       // literales enteros
 	float real;       // literales reales
@@ -27,6 +30,9 @@
 }
 
  //PARTE 1.3: Tokens. Los multivaluados llevan entre <> el campo del %union
+ //declaracion del tipo
+%type <tipo> tipoBase dTipo
+%type <ids> listaId
  // Palabras reservadas
 %token accionTK algoritmoTK booleanoTK cadenaTK caracterTK constTK continuarTK
 %token deTK devTK divTK entTK enteroTK esTK faccionTK falgoritmoTK falsoTK
@@ -123,14 +129,14 @@ dTipo
 	| identificadorTK	{ }
 	| expresion subrangoTK expresion	{ }
 	| refTK dTipo	{ }
-	| tipoBase	{ }
+	| tipoBase	{ $$ = $1; }
 	;
 tipoBase
-	: enteroTK	{ }
-	| booleanoTK	{ }
-	| caracterTK	{ }
-	| realTK	{ }
-	| cadenaTK	{ }
+	: enteroTK	{ $$ = T_ENTERO; }
+	| booleanoTK	{ $$ = T_BOOLEANO; }
+	| caracterTK	{ $$ = T_CARACTER ;}
+	| realTK	{ $$ = T_REAL; }
+	| cadenaTK	{ $$ = T_CADENA; }
 	;
 listaCampos
 	: identificadorTK dosPuntosTK dTipo puntoYComaTK listaCampos	{ }
@@ -151,12 +157,23 @@ literal
 	| falsoTK	{ }
 	;
 listaDVar
-	: listaId dosPuntosTK dTipo puntoYComaTK listaDVar	{ }
+	: listaId dosPuntosTK dTipo puntoYComaTK listaDVar	{
+															for (int i = 1; i < 4 ; i++)
+              													i = $3;
+	 													}
 	| /* vacio */	{ }
 	;
 listaId
-	: identificadorTK comaTK listaId	{ }
-	| identificadorTK	{ }
+	: identificadorTK comaTK listaId	{ 
+											$$  = $3;
+											$$.nombres[$$.n] = $1;       
+											$$.n++; 
+										}
+	| identificadorTK	{ 
+							$$.n = 0;                    
+							$$.nombres[$$.n] = $1;       
+							$$.n++;                      
+	 					}
 	;
 declEntSal
 	: declEnt	{ }
