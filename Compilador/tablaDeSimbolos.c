@@ -25,3 +25,12 @@ void imprimir(void) {
         printf("Nombre: %s, Tipo: %s\n", tabla[i].nombre, nombreTipo[tabla[i].tipo]);
     }
 }
+
+int buscar(char *nombre) {
+    for(int i = 0; i < numSimbolos; i++) {
+        if(strcmp(tabla[i].nombre, nombre) == 0) {
+            return i; // Retorna el índice del símbolo encontrado
+        }
+    }
+    return -1; // Retorna -1 si no se encuentra el símbolo
+}
