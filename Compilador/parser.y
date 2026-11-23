@@ -132,11 +132,11 @@ dTipo
 	| tipoBase	{ $$ = $1; }
 	;
 tipoBase
-	: enteroTK	{ $$ = T_ENTERO; }
-	| booleanoTK	{ $$ = T_BOOLEANO; }
-	| caracterTK	{ $$ = T_CARACTER ;}
-	| realTK	{ $$ = T_REAL; }
-	| cadenaTK	{ $$ = T_CADENA; }
+	: enteroTK	{ $$ = ENTERO; }
+	| booleanoTK	{ $$ = BOOLEANO; }
+	| caracterTK	{ $$ = CARACTER ;}
+	| realTK	{ $$ = REAL; }
+	| cadenaTK	{ $$ = CADENA; }
 	;
 listaCampos
 	: identificadorTK dosPuntosTK dTipo puntoYComaTK listaCampos	{ }
