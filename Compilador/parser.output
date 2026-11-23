@@ -269,10 +269,10 @@ Nonterminals, with rules where they appear
     listaDTipo (87)
         on left: 20 21
         on right: 15 20
-    dTipo (88)
+    dTipo <tipo> (88)
         on left: 22 23 24 25 26 27
         on right: 20 23 26 33 43 97 100 101 102
-    tipoBase (89)
+    tipoBase <tipo> (89)
         on left: 28 29 30 31 32
         on right: 27
     listaCampos (90)
@@ -287,7 +287,7 @@ Nonterminals, with rules where they appear
     listaDVar (93)
         on left: 43 44
         on right: 17 43 50 51 97
-    listaId (94)
+    listaId <ids> (94)
         on left: 45 46
         on right: 43 45 100 101 102
     declEntSal (95)

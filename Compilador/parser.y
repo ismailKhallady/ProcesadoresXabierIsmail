@@ -305,6 +305,7 @@ int main(int argc, char **argv){
 		yyin = stdin;
 	if (yyparse() == 0) {
 		printf("COMPILADOR: el programa es sintacticamente correcto\n");
+		imprimir();
 		return EXIT_SUCCESS;
 	}
 	return EXIT_FAILURE;
