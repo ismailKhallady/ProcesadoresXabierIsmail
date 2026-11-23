@@ -23,8 +23,8 @@ typedef struct {
     NombreDeTipoT tipo;
 } Simbolo;
 
-int buscar(char *nombre);
 void insertar(char *nombre, NombreDeTipoT tipo);
 void imprimir(void);
+int buscar(char *nombre);
 
 #endif
