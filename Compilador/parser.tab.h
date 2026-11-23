@@ -134,14 +134,16 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "parser.y"
+#line 23 "parser.y"
 
+	listaNombres ids;
+	NombreDeTipoT tipo;
 	char * cadena;    // identificadores y literales cadena
 	int entero;       // literales enteros
 	float real;       // literales reales
 	char caracter;    // literales caracter
 
-#line 145 "parser.tab.h"
+#line 147 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

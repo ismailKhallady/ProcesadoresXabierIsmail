@@ -71,11 +71,12 @@
 
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include "tablaDeSimbolos.h"
 	int yylex(void);             // La crea flex a partir de scanner.l
 	void yyerror(const char *);  // Bison la llama cuando ve un error
 	extern FILE* yyin;           // Fichero del que lee el scanner
 
-#line 79 "parser.tab.c"
+#line 80 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -613,17 +614,17 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    69,    69,    72,    75,    78,    79,    80,    83,    84,
-      85,    88,    91,    92,    93,    94,   102,   105,   108,   111,
-     112,   117,   118,   121,   122,   123,   124,   125,   126,   129,
-     130,   131,   132,   133,   136,   137,   142,   143,   146,   147,
-     148,   149,   150,   151,   154,   155,   158,   159,   162,   163,
-     164,   167,   170,   180,   181,   182,   183,   184,   185,   186,
-     187,   188,   189,   190,   191,   192,   193,   194,   195,   196,
-     199,   199,   199,   199,   199,   199,   202,   203,   204,   205,
-     213,   214,   218,   219,   220,   221,   222,   225,   228,   231,
-     232,   235,   236,   239,   242,   248,   251,   254,   257,   260,
-     261,   264,   265,   266,   269,   272,   275,   276
+       0,    75,    75,    78,    81,    84,    85,    86,    89,    90,
+      91,    94,    97,    98,    99,   100,   108,   111,   114,   117,
+     118,   123,   124,   127,   128,   129,   130,   131,   132,   135,
+     136,   137,   138,   139,   142,   143,   148,   149,   152,   153,
+     154,   155,   156,   157,   160,   164,   167,   172,   179,   180,
+     181,   184,   187,   197,   198,   199,   200,   201,   202,   203,
+     204,   205,   206,   207,   208,   209,   210,   211,   212,   213,
+     216,   216,   216,   216,   216,   216,   219,   220,   221,   222,
+     230,   231,   235,   236,   237,   238,   239,   242,   245,   248,
+     249,   252,   253,   256,   259,   265,   268,   271,   274,   277,
+     278,   281,   282,   283,   286,   289,   292,   293
 };
 #endif
 
@@ -1716,601 +1717,612 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* descAlgoritmo: algoritmoTK identificadorTK puntoYComaTK cabeceraAlg bloqueAlg falgoritmoTK puntoTK  */
-#line 69 "parser.y"
+#line 75 "parser.y"
                                                                                                 { }
-#line 1722 "parser.tab.c"
+#line 1723 "parser.tab.c"
     break;
 
   case 3: /* cabeceraAlg: declGlobales declAF declEntSal comentarioTK  */
-#line 72 "parser.y"
+#line 78 "parser.y"
                                                         { }
-#line 1728 "parser.tab.c"
+#line 1729 "parser.tab.c"
     break;
 
   case 4: /* bloqueAlg: bloque comentarioTK  */
-#line 75 "parser.y"
+#line 81 "parser.y"
                                 { }
-#line 1734 "parser.tab.c"
+#line 1735 "parser.tab.c"
     break;
 
   case 5: /* declGlobales: declaracionTipo declGlobales  */
-#line 78 "parser.y"
+#line 84 "parser.y"
                                         { }
-#line 1740 "parser.tab.c"
+#line 1741 "parser.tab.c"
     break;
 
   case 6: /* declGlobales: declaracionConst declGlobales  */
-#line 79 "parser.y"
+#line 85 "parser.y"
                                         { }
-#line 1746 "parser.tab.c"
+#line 1747 "parser.tab.c"
     break;
 
   case 7: /* declGlobales: %empty  */
-#line 80 "parser.y"
+#line 86 "parser.y"
                         { }
-#line 1752 "parser.tab.c"
+#line 1753 "parser.tab.c"
     break;
 
   case 8: /* declAF: accionD declAF  */
-#line 83 "parser.y"
+#line 89 "parser.y"
                                 { }
-#line 1758 "parser.tab.c"
+#line 1759 "parser.tab.c"
     break;
 
   case 9: /* declAF: funcionD declAF  */
-#line 84 "parser.y"
+#line 90 "parser.y"
                                 { }
-#line 1764 "parser.tab.c"
+#line 1765 "parser.tab.c"
     break;
 
   case 10: /* declAF: %empty  */
-#line 85 "parser.y"
+#line 91 "parser.y"
                         { }
-#line 1770 "parser.tab.c"
+#line 1771 "parser.tab.c"
     break;
 
   case 11: /* bloque: declaraciones instrucciones  */
-#line 88 "parser.y"
+#line 94 "parser.y"
                                         { }
-#line 1776 "parser.tab.c"
+#line 1777 "parser.tab.c"
     break;
 
   case 12: /* declaraciones: declaracionTipo declaraciones  */
-#line 91 "parser.y"
+#line 97 "parser.y"
                                         { }
-#line 1782 "parser.tab.c"
+#line 1783 "parser.tab.c"
     break;
 
   case 13: /* declaraciones: declaracionConst declaraciones  */
-#line 92 "parser.y"
+#line 98 "parser.y"
                                                 { }
-#line 1788 "parser.tab.c"
+#line 1789 "parser.tab.c"
     break;
 
   case 14: /* declaraciones: declaracionVar declaraciones  */
-#line 93 "parser.y"
+#line 99 "parser.y"
                                         { }
-#line 1794 "parser.tab.c"
+#line 1795 "parser.tab.c"
     break;
 
   case 15: /* declaraciones: %empty  */
-#line 94 "parser.y"
+#line 100 "parser.y"
                         { }
-#line 1800 "parser.tab.c"
+#line 1801 "parser.tab.c"
     break;
 
   case 16: /* declaracionTipo: tipoTK listaDTipo ftipoTK finDecl  */
-#line 102 "parser.y"
+#line 108 "parser.y"
                                                 { }
-#line 1806 "parser.tab.c"
+#line 1807 "parser.tab.c"
     break;
 
   case 17: /* declaracionConst: constTK listaDCte fconstTK finDecl  */
-#line 105 "parser.y"
+#line 111 "parser.y"
                                                 { }
-#line 1812 "parser.tab.c"
+#line 1813 "parser.tab.c"
     break;
 
   case 18: /* declaracionVar: varTK listaDVar fvarTK finDecl  */
-#line 108 "parser.y"
+#line 114 "parser.y"
                                                 { }
-#line 1818 "parser.tab.c"
+#line 1819 "parser.tab.c"
     break;
 
   case 19: /* finDecl: puntoYComaTK  */
-#line 111 "parser.y"
+#line 117 "parser.y"
                         { }
-#line 1824 "parser.tab.c"
+#line 1825 "parser.tab.c"
     break;
 
   case 20: /* finDecl: %empty  */
-#line 112 "parser.y"
+#line 118 "parser.y"
                         { }
-#line 1830 "parser.tab.c"
+#line 1831 "parser.tab.c"
     break;
 
   case 21: /* listaDTipo: identificadorTK igualTK dTipo puntoYComaTK listaDTipo  */
-#line 117 "parser.y"
+#line 123 "parser.y"
                                                                 { }
-#line 1836 "parser.tab.c"
+#line 1837 "parser.tab.c"
     break;
 
   case 22: /* listaDTipo: %empty  */
-#line 118 "parser.y"
+#line 124 "parser.y"
                         { }
-#line 1842 "parser.tab.c"
+#line 1843 "parser.tab.c"
     break;
 
   case 23: /* dTipo: tuplaTK listaCampos ftuplaTK  */
-#line 121 "parser.y"
+#line 127 "parser.y"
                                         { }
-#line 1848 "parser.tab.c"
+#line 1849 "parser.tab.c"
     break;
 
   case 24: /* dTipo: tablaTK corchIzqTK expresion subrangoTK expresion corchDerTK deTK dTipo  */
-#line 122 "parser.y"
+#line 128 "parser.y"
                                                                                         { }
-#line 1854 "parser.tab.c"
+#line 1855 "parser.tab.c"
     break;
 
   case 25: /* dTipo: identificadorTK  */
-#line 123 "parser.y"
+#line 129 "parser.y"
                                 { }
-#line 1860 "parser.tab.c"
+#line 1861 "parser.tab.c"
     break;
 
   case 26: /* dTipo: expresion subrangoTK expresion  */
-#line 124 "parser.y"
+#line 130 "parser.y"
                                                 { }
-#line 1866 "parser.tab.c"
+#line 1867 "parser.tab.c"
     break;
 
   case 27: /* dTipo: refTK dTipo  */
-#line 125 "parser.y"
+#line 131 "parser.y"
                         { }
-#line 1872 "parser.tab.c"
+#line 1873 "parser.tab.c"
     break;
 
   case 28: /* dTipo: tipoBase  */
-#line 126 "parser.y"
-                        { }
-#line 1878 "parser.tab.c"
+#line 132 "parser.y"
+                        { (yyval.tipo) = (yyvsp[0].tipo); }
+#line 1879 "parser.tab.c"
     break;
 
   case 29: /* tipoBase: enteroTK  */
-#line 129 "parser.y"
-                        { }
-#line 1884 "parser.tab.c"
+#line 135 "parser.y"
+                        { (yyval.tipo) = ENTERO; }
+#line 1885 "parser.tab.c"
     break;
 
   case 30: /* tipoBase: booleanoTK  */
-#line 130 "parser.y"
-                        { }
-#line 1890 "parser.tab.c"
+#line 136 "parser.y"
+                        { (yyval.tipo) = BOOLEANO; }
+#line 1891 "parser.tab.c"
     break;
 
   case 31: /* tipoBase: caracterTK  */
-#line 131 "parser.y"
-                        { }
-#line 1896 "parser.tab.c"
+#line 137 "parser.y"
+                        { (yyval.tipo) = CARACTER ;}
+#line 1897 "parser.tab.c"
     break;
 
   case 32: /* tipoBase: realTK  */
-#line 132 "parser.y"
-                        { }
-#line 1902 "parser.tab.c"
+#line 138 "parser.y"
+                        { (yyval.tipo) = REAL; }
+#line 1903 "parser.tab.c"
     break;
 
   case 33: /* tipoBase: cadenaTK  */
-#line 133 "parser.y"
-                        { }
-#line 1908 "parser.tab.c"
+#line 139 "parser.y"
+                        { (yyval.tipo) = CADENA; }
+#line 1909 "parser.tab.c"
     break;
 
   case 34: /* listaCampos: identificadorTK dosPuntosTK dTipo puntoYComaTK listaCampos  */
-#line 136 "parser.y"
+#line 142 "parser.y"
                                                                         { }
-#line 1914 "parser.tab.c"
+#line 1915 "parser.tab.c"
     break;
 
   case 35: /* listaCampos: %empty  */
-#line 137 "parser.y"
+#line 143 "parser.y"
                         { }
-#line 1920 "parser.tab.c"
+#line 1921 "parser.tab.c"
     break;
 
   case 36: /* listaDCte: identificadorTK igualTK literal puntoYComaTK listaDCte  */
-#line 142 "parser.y"
+#line 148 "parser.y"
                                                                         { }
-#line 1926 "parser.tab.c"
+#line 1927 "parser.tab.c"
     break;
 
   case 37: /* listaDCte: %empty  */
-#line 143 "parser.y"
+#line 149 "parser.y"
                         { }
-#line 1932 "parser.tab.c"
+#line 1933 "parser.tab.c"
     break;
 
   case 38: /* literal: literalEnteroTK  */
-#line 146 "parser.y"
+#line 152 "parser.y"
                                 { }
-#line 1938 "parser.tab.c"
+#line 1939 "parser.tab.c"
     break;
 
   case 39: /* literal: literalRealTK  */
-#line 147 "parser.y"
+#line 153 "parser.y"
                         { }
-#line 1944 "parser.tab.c"
+#line 1945 "parser.tab.c"
     break;
 
   case 40: /* literal: literalCaracterTK  */
-#line 148 "parser.y"
+#line 154 "parser.y"
                                 { }
-#line 1950 "parser.tab.c"
+#line 1951 "parser.tab.c"
     break;
 
   case 41: /* literal: literalCadenaTK  */
-#line 149 "parser.y"
+#line 155 "parser.y"
                                 { }
-#line 1956 "parser.tab.c"
+#line 1957 "parser.tab.c"
     break;
 
   case 42: /* literal: verdaderoTK  */
-#line 150 "parser.y"
+#line 156 "parser.y"
                         { }
-#line 1962 "parser.tab.c"
+#line 1963 "parser.tab.c"
     break;
 
   case 43: /* literal: falsoTK  */
-#line 151 "parser.y"
+#line 157 "parser.y"
                         { }
-#line 1968 "parser.tab.c"
+#line 1969 "parser.tab.c"
     break;
 
   case 44: /* listaDVar: listaId dosPuntosTK dTipo puntoYComaTK listaDVar  */
-#line 154 "parser.y"
-                                                                { }
-#line 1974 "parser.tab.c"
+#line 160 "parser.y"
+                                                                {
+															for (int i = (yyvsp[-4].ids).n - 1; i >= 0; i--)
+              													insertar((yyvsp[-4].ids).nombres[i], (yyvsp[-2].tipo));
+	 													}
+#line 1978 "parser.tab.c"
     break;
 
   case 45: /* listaDVar: %empty  */
-#line 155 "parser.y"
+#line 164 "parser.y"
                         { }
-#line 1980 "parser.tab.c"
+#line 1984 "parser.tab.c"
     break;
 
   case 46: /* listaId: identificadorTK comaTK listaId  */
-#line 158 "parser.y"
-                                                { }
-#line 1986 "parser.tab.c"
+#line 167 "parser.y"
+                                                { 
+											(yyval.ids)  = (yyvsp[0].ids);
+											(yyval.ids).nombres[(yyval.ids).n] = (yyvsp[-2].cadena);       
+											(yyval.ids).n++; 
+										}
+#line 1994 "parser.tab.c"
     break;
 
   case 47: /* listaId: identificadorTK  */
-#line 159 "parser.y"
-                                { }
-#line 1992 "parser.tab.c"
-    break;
-
-  case 48: /* declEntSal: declEnt  */
-#line 162 "parser.y"
-                        { }
-#line 1998 "parser.tab.c"
-    break;
-
-  case 49: /* declEntSal: declEnt declSal  */
-#line 163 "parser.y"
-                                { }
+#line 172 "parser.y"
+                                { 
+							(yyval.ids).n = 0;                    
+							(yyval.ids).nombres[(yyval.ids).n] = (yyvsp[0].cadena);       
+							(yyval.ids).n++;                      
+	 					}
 #line 2004 "parser.tab.c"
     break;
 
-  case 50: /* declEntSal: declSal  */
-#line 164 "parser.y"
+  case 48: /* declEntSal: declEnt  */
+#line 179 "parser.y"
                         { }
 #line 2010 "parser.tab.c"
     break;
 
-  case 51: /* declEnt: entTK listaDVar  */
-#line 167 "parser.y"
+  case 49: /* declEntSal: declEnt declSal  */
+#line 180 "parser.y"
                                 { }
 #line 2016 "parser.tab.c"
     break;
 
-  case 52: /* declSal: salTK listaDVar  */
-#line 170 "parser.y"
-                                { }
+  case 50: /* declEntSal: declSal  */
+#line 181 "parser.y"
+                        { }
 #line 2022 "parser.tab.c"
     break;
 
-  case 53: /* expresion: expresion masTK expresion  */
-#line 180 "parser.y"
-                                        { }
+  case 51: /* declEnt: entTK listaDVar  */
+#line 184 "parser.y"
+                                { }
 #line 2028 "parser.tab.c"
     break;
 
-  case 54: /* expresion: expresion menosTK expresion  */
-#line 181 "parser.y"
-                                        { }
+  case 52: /* declSal: salTK listaDVar  */
+#line 187 "parser.y"
+                                { }
 #line 2034 "parser.tab.c"
     break;
 
-  case 55: /* expresion: expresion porTK expresion  */
-#line 182 "parser.y"
+  case 53: /* expresion: expresion masTK expresion  */
+#line 197 "parser.y"
                                         { }
 #line 2040 "parser.tab.c"
     break;
 
-  case 56: /* expresion: expresion divRealTK expresion  */
-#line 183 "parser.y"
+  case 54: /* expresion: expresion menosTK expresion  */
+#line 198 "parser.y"
                                         { }
 #line 2046 "parser.tab.c"
     break;
 
-  case 57: /* expresion: expresion divTK expresion  */
-#line 184 "parser.y"
+  case 55: /* expresion: expresion porTK expresion  */
+#line 199 "parser.y"
                                         { }
 #line 2052 "parser.tab.c"
     break;
 
-  case 58: /* expresion: expresion modTK expresion  */
-#line 185 "parser.y"
+  case 56: /* expresion: expresion divRealTK expresion  */
+#line 200 "parser.y"
                                         { }
 #line 2058 "parser.tab.c"
     break;
 
-  case 59: /* expresion: expresion potenciaTK expresion  */
-#line 186 "parser.y"
-                                         { }
+  case 57: /* expresion: expresion divTK expresion  */
+#line 201 "parser.y"
+                                        { }
 #line 2064 "parser.tab.c"
     break;
 
-  case 60: /* expresion: menosTK expresion  */
-#line 187 "parser.y"
-                                                { }
+  case 58: /* expresion: expresion modTK expresion  */
+#line 202 "parser.y"
+                                        { }
 #line 2070 "parser.tab.c"
     break;
 
-  case 61: /* expresion: masTK expresion  */
-#line 188 "parser.y"
-                                        { }
+  case 59: /* expresion: expresion potenciaTK expresion  */
+#line 203 "parser.y"
+                                         { }
 #line 2076 "parser.tab.c"
     break;
 
-  case 62: /* expresion: expresion yTK expresion  */
-#line 189 "parser.y"
-                                        { }
+  case 60: /* expresion: menosTK expresion  */
+#line 204 "parser.y"
+                                                { }
 #line 2082 "parser.tab.c"
     break;
 
-  case 63: /* expresion: expresion oTK expresion  */
-#line 190 "parser.y"
+  case 61: /* expresion: masTK expresion  */
+#line 205 "parser.y"
                                         { }
 #line 2088 "parser.tab.c"
     break;
 
-  case 64: /* expresion: noTK expresion  */
-#line 191 "parser.y"
-                                { }
+  case 62: /* expresion: expresion yTK expresion  */
+#line 206 "parser.y"
+                                        { }
 #line 2094 "parser.tab.c"
     break;
 
-  case 65: /* expresion: expresion oprel expresion  */
-#line 192 "parser.y"
-                                                        { }
+  case 63: /* expresion: expresion oTK expresion  */
+#line 207 "parser.y"
+                                        { }
 #line 2100 "parser.tab.c"
     break;
 
-  case 66: /* expresion: parIzqTK expresion parDerTK  */
-#line 193 "parser.y"
-                                        { }
+  case 64: /* expresion: noTK expresion  */
+#line 208 "parser.y"
+                                { }
 #line 2106 "parser.tab.c"
     break;
 
-  case 67: /* expresion: operando  */
-#line 194 "parser.y"
-                        { }
+  case 65: /* expresion: expresion oprel expresion  */
+#line 209 "parser.y"
+                                                        { }
 #line 2112 "parser.tab.c"
     break;
 
-  case 68: /* expresion: literal  */
-#line 195 "parser.y"
-                        { }
+  case 66: /* expresion: parIzqTK expresion parDerTK  */
+#line 210 "parser.y"
+                                        { }
 #line 2118 "parser.tab.c"
     break;
 
-  case 69: /* expresion: funcionLl  */
-#line 196 "parser.y"
+  case 67: /* expresion: operando  */
+#line 211 "parser.y"
                         { }
 #line 2124 "parser.tab.c"
     break;
 
-  case 75: /* oprel: distintoTK  */
-#line 199 "parser.y"
-                                                                                        { }
+  case 68: /* expresion: literal  */
+#line 212 "parser.y"
+                        { }
 #line 2130 "parser.tab.c"
     break;
 
-  case 76: /* operando: identificadorTK  */
-#line 202 "parser.y"
-                                { }
+  case 69: /* expresion: funcionLl  */
+#line 213 "parser.y"
+                        { }
 #line 2136 "parser.tab.c"
     break;
 
-  case 77: /* operando: operando puntoTK identificadorTK  */
-#line 203 "parser.y"
-                                                { }
+  case 75: /* oprel: distintoTK  */
+#line 216 "parser.y"
+                                                                                        { }
 #line 2142 "parser.tab.c"
     break;
 
-  case 78: /* operando: operando corchIzqTK expresion corchDerTK  */
-#line 204 "parser.y"
-                                                        { }
+  case 76: /* operando: identificadorTK  */
+#line 219 "parser.y"
+                                { }
 #line 2148 "parser.tab.c"
     break;
 
-  case 79: /* operando: operando refTK  */
-#line 205 "parser.y"
-                                { }
+  case 77: /* operando: operando puntoTK identificadorTK  */
+#line 220 "parser.y"
+                                                { }
 #line 2154 "parser.tab.c"
     break;
 
-  case 82: /* instruccion: continuarTK  */
-#line 218 "parser.y"
-                        { }
+  case 78: /* operando: operando corchIzqTK expresion corchDerTK  */
+#line 221 "parser.y"
+                                                        { }
 #line 2160 "parser.tab.c"
     break;
 
-  case 83: /* instruccion: asignacion  */
-#line 219 "parser.y"
-                        { }
+  case 79: /* operando: operando refTK  */
+#line 222 "parser.y"
+                                { }
 #line 2166 "parser.tab.c"
     break;
 
-  case 84: /* instruccion: alternativa  */
-#line 220 "parser.y"
+  case 82: /* instruccion: continuarTK  */
+#line 235 "parser.y"
                         { }
 #line 2172 "parser.tab.c"
     break;
 
-  case 85: /* instruccion: iteracion  */
-#line 221 "parser.y"
+  case 83: /* instruccion: asignacion  */
+#line 236 "parser.y"
                         { }
 #line 2178 "parser.tab.c"
     break;
 
-  case 86: /* instruccion: accionLl  */
-#line 222 "parser.y"
+  case 84: /* instruccion: alternativa  */
+#line 237 "parser.y"
                         { }
 #line 2184 "parser.tab.c"
     break;
 
-  case 87: /* asignacion: operando asignacionTK expresion  */
-#line 225 "parser.y"
-                                                { }
+  case 85: /* instruccion: iteracion  */
+#line 238 "parser.y"
+                        { }
 #line 2190 "parser.tab.c"
     break;
 
-  case 88: /* alternativa: siTK expresion entoncesTK instrucciones listaOpciones fsiTK  */
-#line 228 "parser.y"
-                                                                        { }
+  case 86: /* instruccion: accionLl  */
+#line 239 "parser.y"
+                        { }
 #line 2196 "parser.tab.c"
     break;
 
-  case 89: /* listaOpciones: sinoSiTK expresion entoncesTK instrucciones listaOpciones  */
-#line 231 "parser.y"
-                                                                        { }
+  case 87: /* asignacion: operando asignacionTK expresion  */
+#line 242 "parser.y"
+                                                { }
 #line 2202 "parser.tab.c"
     break;
 
-  case 90: /* listaOpciones: %empty  */
-#line 232 "parser.y"
-                        { }
+  case 88: /* alternativa: siTK expresion entoncesTK instrucciones listaOpciones fsiTK  */
+#line 245 "parser.y"
+                                                                        { }
 #line 2208 "parser.tab.c"
     break;
 
-  case 91: /* iteracion: itCotaFija  */
-#line 235 "parser.y"
-                        { }
+  case 89: /* listaOpciones: sinoSiTK expresion entoncesTK instrucciones listaOpciones  */
+#line 248 "parser.y"
+                                                                        { }
 #line 2214 "parser.tab.c"
     break;
 
-  case 92: /* iteracion: itCotaExp  */
-#line 236 "parser.y"
+  case 90: /* listaOpciones: %empty  */
+#line 249 "parser.y"
                         { }
 #line 2220 "parser.tab.c"
     break;
 
-  case 93: /* itCotaExp: mientrasTK expresion hacerTK instrucciones fmientrasTK  */
-#line 239 "parser.y"
-                                                                        { }
+  case 91: /* iteracion: itCotaFija  */
+#line 252 "parser.y"
+                        { }
 #line 2226 "parser.tab.c"
     break;
 
-  case 94: /* itCotaFija: paraTK identificadorTK asignacionTK expresion hastaTK expresion hacerTK instrucciones fparaTK  */
-#line 242 "parser.y"
-                                                                                                        { }
+  case 92: /* iteracion: itCotaExp  */
+#line 253 "parser.y"
+                        { }
 #line 2232 "parser.tab.c"
     break;
 
-  case 95: /* accionD: accionTK aCabecera bloque faccionTK  */
-#line 248 "parser.y"
-                                                { }
+  case 93: /* itCotaExp: mientrasTK expresion hacerTK instrucciones fmientrasTK  */
+#line 256 "parser.y"
+                                                                        { }
 #line 2238 "parser.tab.c"
     break;
 
-  case 96: /* funcionD: funcionTK fCabecera bloque devTK expresion ffuncionTK  */
-#line 251 "parser.y"
-                                                                { }
+  case 94: /* itCotaFija: paraTK identificadorTK asignacionTK expresion hastaTK expresion hacerTK instrucciones fparaTK  */
+#line 259 "parser.y"
+                                                                                                        { }
 #line 2244 "parser.tab.c"
     break;
 
-  case 97: /* aCabecera: identificadorTK parIzqTK dParForm parDerTK puntoYComaTK  */
-#line 254 "parser.y"
-                                                                        { }
+  case 95: /* accionD: accionTK aCabecera bloque faccionTK  */
+#line 265 "parser.y"
+                                                { }
 #line 2250 "parser.tab.c"
     break;
 
-  case 98: /* fCabecera: identificadorTK parIzqTK listaDVar parDerTK devTK dTipo puntoYComaTK  */
-#line 257 "parser.y"
-                                                                                { }
+  case 96: /* funcionD: funcionTK fCabecera bloque devTK expresion ffuncionTK  */
+#line 268 "parser.y"
+                                                                { }
 #line 2256 "parser.tab.c"
     break;
 
-  case 99: /* dParForm: dPForm puntoYComaTK dParForm  */
-#line 260 "parser.y"
-                                        { }
+  case 97: /* aCabecera: identificadorTK parIzqTK dParForm parDerTK puntoYComaTK  */
+#line 271 "parser.y"
+                                                                        { }
 #line 2262 "parser.tab.c"
     break;
 
-  case 100: /* dParForm: %empty  */
-#line 261 "parser.y"
-                        { }
+  case 98: /* fCabecera: identificadorTK parIzqTK listaDVar parDerTK devTK dTipo puntoYComaTK  */
+#line 274 "parser.y"
+                                                                                { }
 #line 2268 "parser.tab.c"
     break;
 
-  case 101: /* dPForm: entTK listaId dosPuntosTK dTipo  */
-#line 264 "parser.y"
-                                                { }
+  case 99: /* dParForm: dPForm puntoYComaTK dParForm  */
+#line 277 "parser.y"
+                                        { }
 #line 2274 "parser.tab.c"
     break;
 
-  case 102: /* dPForm: salTK listaId dosPuntosTK dTipo  */
-#line 265 "parser.y"
-                                                { }
+  case 100: /* dParForm: %empty  */
+#line 278 "parser.y"
+                        { }
 #line 2280 "parser.tab.c"
     break;
 
-  case 103: /* dPForm: esTK listaId dosPuntosTK dTipo  */
-#line 266 "parser.y"
+  case 101: /* dPForm: entTK listaId dosPuntosTK dTipo  */
+#line 281 "parser.y"
                                                 { }
 #line 2286 "parser.tab.c"
     break;
 
-  case 104: /* accionLl: identificadorTK parIzqTK lLl parDerTK  */
-#line 269 "parser.y"
+  case 102: /* dPForm: salTK listaId dosPuntosTK dTipo  */
+#line 282 "parser.y"
                                                 { }
 #line 2292 "parser.tab.c"
     break;
 
-  case 105: /* funcionLl: identificadorTK parIzqTK lLl parDerTK  */
-#line 272 "parser.y"
+  case 103: /* dPForm: esTK listaId dosPuntosTK dTipo  */
+#line 283 "parser.y"
                                                 { }
 #line 2298 "parser.tab.c"
     break;
 
-  case 106: /* lLl: expresion comaTK lLl  */
-#line 275 "parser.y"
-                                { }
+  case 104: /* accionLl: identificadorTK parIzqTK lLl parDerTK  */
+#line 286 "parser.y"
+                                                { }
 #line 2304 "parser.tab.c"
     break;
 
-  case 107: /* lLl: expresion  */
-#line 276 "parser.y"
-                        { }
+  case 105: /* funcionLl: identificadorTK parIzqTK lLl parDerTK  */
+#line 289 "parser.y"
+                                                { }
 #line 2310 "parser.tab.c"
     break;
 
+  case 106: /* lLl: expresion comaTK lLl  */
+#line 292 "parser.y"
+                                { }
+#line 2316 "parser.tab.c"
+    break;
 
-#line 2314 "parser.tab.c"
+  case 107: /* lLl: expresion  */
+#line 293 "parser.y"
+                        { }
+#line 2322 "parser.tab.c"
+    break;
+
+
+#line 2326 "parser.tab.c"
 
       default: break;
     }
@@ -2534,7 +2546,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 279 "parser.y"
+#line 296 "parser.y"
 
 
 int main(int argc, char **argv){
@@ -2547,6 +2559,7 @@ int main(int argc, char **argv){
 		yyin = stdin;
 	if (yyparse() == 0) {
 		printf("COMPILADOR: el programa es sintacticamente correcto\n");
+		imprimir();
 		return EXIT_SUCCESS;
 	}
 	return EXIT_FAILURE;

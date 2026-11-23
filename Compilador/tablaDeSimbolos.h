@@ -19,12 +19,12 @@ typedef struct {
 } listaNombres;
 
 typedef struct {
-    char nombre[MAX_NOMBRE];
+    char *nombre;
     NombreDeTipoT tipo;
 } Simbolo;
 
 int buscar(char *nombre);
-int insertar(char *nombre, NombreDeTipoT tipo);
+void insertar(char *nombre, NombreDeTipoT tipo);
 void imprimir(void);
 
 #endif
