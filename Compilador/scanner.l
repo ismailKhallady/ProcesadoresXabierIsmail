@@ -150,7 +150,10 @@ distintoDR        <>
 {yDR}               { return yTK; }
 
  /* 2. LITERALES BOOLEANOS Y OTROS LITERALES */
-{literalEnteroDR}		{ return literalEnteroTK;}
+{literalEnteroDR}		{ 
+	yylval.entero = atof(yytext);
+	return literalEnteroTK;
+}
 
 {literalRealDR}    {
     yylval.real = atof(yytext);
