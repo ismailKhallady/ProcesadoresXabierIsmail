@@ -22,7 +22,7 @@
  //PARTE 1.2: Tipos de los valores que el scanner deja en yylval
 %union{
 	listaNombres ids;
-	int tipo;
+	NombreDeTipoT tipo;
 	char * cadena;    // identificadores y literales cadena
 	int entero;       // literales enteros
 	float real;       // literales reales
@@ -158,8 +158,8 @@ literal
 	;
 listaDVar
 	: listaId dosPuntosTK dTipo puntoYComaTK listaDVar	{
-															for (int i = 1; i < 4 ; i++)
-              													i = $3;
+															for (int i = $1.n - 1; i >= 0; i--)
+              													insertar($1.nombres[i], $3);
 	 													}
 	| /* vacio */	{ }
 	;
