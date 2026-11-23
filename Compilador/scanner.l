@@ -5,7 +5,7 @@
 	// Headers standard necesarios
 	#include <stdio.h> //Para poder escribir en el terminal
 	#include <stdlib.h> //Para usar exit()
-	#include <strings.h> //Para trabajar con cadenas de caracteres
+	#include <string.h>
 
 	#include "tablaDeSimbolos.h"
 	#include "parser.tab.h"
@@ -148,7 +148,6 @@ distintoDR        <>
 {tuplaDR}           { return tuplaTK; }
 {varDR}             { return varTK; }
 {yDR}               { return yTK; }
-{fortniteDR}			{ return fortniteTK }
 
  /* 2. LITERALES BOOLEANOS Y OTROS LITERALES */
 {literalEnteroDR}		{ return literalEnteroTK;}
@@ -168,7 +167,12 @@ distintoDR        <>
 {comentarioDR}			{ return comentarioTK;}
 
  /* 3. IDENTIFICADORES (Reconoce cualquier palabra que no sea reservada) */
-{identificadorDR}		{ return identificadorTK;}
+{identificadorDR}	{
+	yylval.cadena = strdup(yytext);   
+	if (yylval.cadena == NULL)
+		errorEnScanner("No hay memoria para copiar el identificador", yytext);
+	return identificadorTK;
+}
 
  /* 4. OPERADORES Y SIMBOLOS */
 
