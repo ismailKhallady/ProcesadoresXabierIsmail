@@ -6,11 +6,14 @@
 CC = gcc
 CFLAGS = -Wall
 
-compilador: parser.tab.o lex.yy.o tablaDeSimbolos.o
-	$(CC) $(CFLAGS) parser.tab.o lex.yy.o tablaDeSimbolos.o -o compilador
+compilador: parser.tab.o lex.yy.o tablaDeSimbolos.o tablaDeCuadruplas.o
+	$(CC) $(CFLAGS) parser.tab.o lex.yy.o tablaDeSimbolos.o tablaDeCuadruplas.o -o compilador
 
 tablaDeSimbolos.o: tablaDeSimbolos.c tablaDeSimbolos.h
 	$(CC) $(CFLAGS) -c tablaDeSimbolos.c
+
+tablaDeCuadruplas.o: tablaDeCuadruplas.c tablaDeCuadruplas.h tablaDeSimbolos.h
+	$(CC) $(CFLAGS) -c tablaDeCuadruplas.c
 
 # -d crea parser.tab.h (lo usa el scanner); -v crea parser.output, donde se ven
 # los estados del automata y los conflictos
