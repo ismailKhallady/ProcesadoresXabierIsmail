@@ -11,6 +11,7 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include "tablaDeSimbolos.h"
+	#include "tablaDeCuadruplas.h"
 	int yylex(void);             // La crea flex a partir de scanner.l
 	void yyerror(const char *);  // Bison la llama cuando ve un error
 	extern FILE* yyin;           // Fichero del que lee el scanner
@@ -306,6 +307,7 @@ int main(int argc, char **argv){
 	if (yyparse() == 0) {
 		printf("COMPILADOR: el programa es sintacticamente correcto\n");
 		imprimir();
+		imprimirCuadruplas();
 		return EXIT_SUCCESS;
 	}
 	return EXIT_FAILURE;
