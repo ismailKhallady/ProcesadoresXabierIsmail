@@ -8,6 +8,7 @@
 	#include <string.h>
 
 	#include "tablaDeSimbolos.h"
+	#include "tablaDeCuadruplas.h"
 	#include "parser.tab.h"
 
 	void errorEnScanner(char*, char*); //prototipo necesario para compilar

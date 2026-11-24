@@ -26,14 +26,13 @@ void imprimirCuadruplas(void) {
         Cuadrupla c = tabla[i];
         switch (c.operador) {
             case ASIGNACION:
-            printf("%d %d := %d\n", i + 1, c.resultado, c.argumento1);
-                break;
+                printf("%d %d := %d\n", i + 1, c.resultado, c.argumento1);
+                    break;
             case INTTOREAL:
             case MENOS_ENTERO:
             case MENOS_REAL:
                 printf("%d %d := %s %d\n", i + 1, c.resultado, nombreOperador[c.operador], c.argumento1);
                 break;
-            
             default:
                 printf("%d %d := %d %s %d\n", i + 1, c.resultado, c.argumento1, nombreOperador[c.operador], c.argumento2);
                 break;
