@@ -1133,11 +1133,14 @@ YY_RULE_SETUP
 case 41:
 YY_RULE_SETUP
 #line 154 "scanner.l"
-{ return literalEnteroTK;}
+{ 
+	yylval.entero = atof(yytext);
+	return literalEnteroTK;
+}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 156 "scanner.l"
+#line 159 "scanner.l"
 {
     yylval.real = atof(yytext);
     return literalRealTK;
@@ -1145,35 +1148,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 161 "scanner.l"
+#line 164 "scanner.l"
 { return verdaderoTK; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 162 "scanner.l"
+#line 165 "scanner.l"
 { return falsoTK; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 164 "scanner.l"
+#line 167 "scanner.l"
 { return literalCaracterTK;}
 	YY_BREAK
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 166 "scanner.l"
+#line 169 "scanner.l"
 { return literalCadenaTK;}
 	YY_BREAK
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 168 "scanner.l"
+#line 171 "scanner.l"
 { return comentarioTK;}
 	YY_BREAK
 /* 3. IDENTIFICADORES (Reconoce cualquier palabra que no sea reservada) */
 case 48:
 YY_RULE_SETUP
-#line 171 "scanner.l"
+#line 174 "scanner.l"
 {
 	yylval.cadena = strdup(yytext);   
 	if (yylval.cadena == NULL)
@@ -1184,137 +1187,137 @@ YY_RULE_SETUP
 /* 4. OPERADORES Y SIMBOLOS */
 case 49:
 YY_RULE_SETUP
-#line 180 "scanner.l"
+#line 183 "scanner.l"
 { return asignacionTK; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 181 "scanner.l"
+#line 184 "scanner.l"
 { return subrangoTK; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 182 "scanner.l"
+#line 185 "scanner.l"
 { return entoncesTK; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 183 "scanner.l"
+#line 186 "scanner.l"
 { return sinoSiTK; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 184 "scanner.l"
+#line 187 "scanner.l"
 { return masTK;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 185 "scanner.l"
+#line 188 "scanner.l"
 { return menosTK; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 186 "scanner.l"
+#line 189 "scanner.l"
 { return porTK; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 187 "scanner.l"
+#line 190 "scanner.l"
 { return divRealTK; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 188 "scanner.l"
+#line 191 "scanner.l"
 { return parIzqTK; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 189 "scanner.l"
+#line 192 "scanner.l"
 { return parDerTK; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 190 "scanner.l"
+#line 193 "scanner.l"
 { return corchIzqTK; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 191 "scanner.l"
+#line 194 "scanner.l"
 { return corchDerTK; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 192 "scanner.l"
+#line 195 "scanner.l"
 { return comaTK; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 193 "scanner.l"
+#line 196 "scanner.l"
 { return puntoYComaTK; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 194 "scanner.l"
+#line 197 "scanner.l"
 { return puntoTK; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 195 "scanner.l"
+#line 198 "scanner.l"
 { return dosPuntosTK; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 196 "scanner.l"
+#line 199 "scanner.l"
 { return igualTK; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 197 "scanner.l"
+#line 200 "scanner.l"
 { return mayorTK; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 198 "scanner.l"
+#line 201 "scanner.l"
 { return menorTK; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 199 "scanner.l"
+#line 202 "scanner.l"
 { return menorIgualTK; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 200 "scanner.l"
+#line 203 "scanner.l"
 { return mayorIgualTK; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 201 "scanner.l"
+#line 204 "scanner.l"
 { return distintoTK; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 202 "scanner.l"
+#line 205 "scanner.l"
 { return potenciaTK; }
 	YY_BREAK
 case 72:
 /* rule 72 can match eol */
 YY_RULE_SETUP
-#line 204 "scanner.l"
+#line 207 "scanner.l"
 { /* Ignorar espacios en blanco, tabuladores, retornos de carro y saltos de linea */ }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 206 "scanner.l"
+#line 209 "scanner.l"
 { //Permite que el resto de caracteres no hagan echo
 }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 209 "scanner.l"
+#line 212 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 1317 "lex.yy.c"
+#line 1320 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2319,7 +2322,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 209 "scanner.l"
+#line 212 "scanner.l"
 
 
  //PARTE 3: CODIGO ADICIONAL
