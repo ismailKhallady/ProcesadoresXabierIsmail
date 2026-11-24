@@ -27,12 +27,17 @@
 	int entero;       // literales enteros
 	float real;       // literales reales
 	char caracter;    // literales caracter
+	atributoExpresion expresion;
+	int place;
 }
 
  //PARTE 1.3: Tokens. Los multivaluados llevan entre <> el campo del %union
  //declaracion del tipo
 %type <tipo> tipoBase dTipo
 %type <ids> listaId
+%type <expresion> expresion literal
+%type <place> operando
+
  // Palabras reservadas
 %token accionTK algoritmoTK booleanoTK cadenaTK caracterTK constTK continuarTK
 %token deTK devTK divTK entTK enteroTK esTK faccionTK falgoritmoTK falsoTK
@@ -208,7 +213,12 @@ expresion
 	| noTK expresion	{ }
 	| expresion oprel expresion %prec igualTK	{ }
 	| parIzqTK expresion parDerTK	{ }
-	| operando	{ }
+	| operando	{ 
+			$$.place = $1; 
+			$$.type = consultarTipo($1);
+			$$.verdadero = NULL;
+			$$.falso = NULL;
+		}
 	| literal	{ }
 	| funcionLl	{ }
 	;
@@ -216,7 +226,7 @@ oprel
 	: menorTK | mayorTK | igualTK | menorIgualTK | mayorIgualTK | distintoTK	{ }
 	;
 operando
-	: identificadorTK	{ }
+	: identificadorTK	{ $$ = buscar($1) }
 	| operando puntoTK identificadorTK	{ }
 	| operando corchIzqTK expresion corchDerTK	{ }
 	| operando refTK	{ }
@@ -239,7 +249,7 @@ instruccion
 	| accionLl	{ }
 	;
 asignacion
-	: operando asignacionTK expresion	{ }
+	: operando asignacionTK expresion	{ gen(ASIGNACION, $3.place, -1, $1) }
 	;
 alternativa
 	: siTK expresion entoncesTK instrucciones listaOpciones fsiTK	{ }
