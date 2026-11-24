@@ -5,16 +5,15 @@
 static Simbolo tabla[MAX_SIMBOLOS];
 static int numSimbolos = 0;
 
-void insertar(char *nombre, NombreDeTipoT tipo) {
-    for(int i = 0; i < numSimbolos; i++) {
-        if(strcmp(tabla[i].nombre, nombre) == 0) {
-            printf("AVISO: El símbolo '%s' ya existe en la tabla de símbolos.\n", nombre);
-            return;
-        }
+int insertar(char *nombre, NombreDeTipoT tipo) {
+    if(buscar(nombre) == -1) { // Verifica si el símbolo ya existe
+        tabla[numSimbolos].tipo = tipo;
+        tabla[numSimbolos].nombre = nombre;
+        numSimbolos++;
+    } else {
+        printf("AVISO: El símbolo '%s' ya existe en la tabla de símbolos.\n", nombre);
     }
-    tabla[numSimbolos].tipo = tipo;
-    tabla[numSimbolos].nombre = nombre;
-    numSimbolos++;
+    return numSimbolos - 1; // Retorna el índice del símbolo insertado o existente
 }
 
 void imprimir(void) {
