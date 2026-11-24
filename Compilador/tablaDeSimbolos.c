@@ -6,14 +6,17 @@ static Simbolo tabla[MAX_SIMBOLOS];
 static int numSimbolos = 0;
 
 int insertar(char *nombre, NombreDeTipoT tipo) {
-    if(buscar(nombre) == -1) { // Verifica si el símbolo ya existe
+    int pos = buscar(nombre);
+    if(pos == -1) { // Verifica si el símbolo ya existe
         tabla[numSimbolos].tipo = tipo;
         tabla[numSimbolos].nombre = nombre;
         numSimbolos++;
+        return numSimbolos - 1;
     } else {
         printf("AVISO: El símbolo '%s' ya existe en la tabla de símbolos.\n", nombre);
+        return pos;
     }
-    return numSimbolos - 1; // Retorna el índice del símbolo insertado o existente
+
 }
 
 void imprimir(void) {
